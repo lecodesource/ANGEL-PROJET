@@ -66,4 +66,11 @@ class StudentController extends Controller
         ];
         return view("student.index", compact("personnes"));
     }
+
+
+
+    public function show(Request $request)
+    {
+        dd($request->id);
+    }
 }
