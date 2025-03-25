@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateStudentRequest;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -12,10 +14,12 @@ class StudentController extends Controller
         return view("student.create");
     }
     //  fonction  qui va stocker le student dans la base de données
-    public function store(Request $request)
+    public function store(CreateStudentRequest $request)
     {
+        $data = $request->all();
+        $student = Student::create($data);
         // dump and die pour voir le contenu de la variable pour le debogage on peut  utiliser   var_dump
-        dd($request->all());
+        dd($student);
     }
 
     public function index()
